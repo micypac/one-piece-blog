@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>  
+    <title>
+      {% block title %}
+      {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+  </head>
+  <body>
+    <div id="content">
+      {% block content %}{% endblock content %}
+    </div>
+    <div id="sidebar">
+      <h2>One Piece World</h2>
+      <p>This is my blog that revolves around the world of One Piece.</p>
+    </div>
+  </body>
+</html>

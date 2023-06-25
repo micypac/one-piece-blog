@@ -1,0 +1,28 @@
+{% extends 'blog/base.xhtml' %}
+{% block title %}My Blog{% endblock title %}
+{% block content %}
+  <h1>One Piece World</h1>
+  
+  {% for post in posts  %}
+    <h2>
+      {% comment %} <a href="{% url 'blog:post_detail' post.id %}"> {% endcomment %}
+      <a href="{{ post.get_absolute_url }}">
+        {{ post.title }}
+      </a>
+
+      <p class="date">
+        Published {{ post.publish }} by {{ post.author }}
+      </p>
+
+      {{ post.body|truncatewords:30|linebreaks }}
+    </h2>
+  {% endfor %}
+
+  {% comment %}function post_list view passes the page requested in a variable called posts{% endcomment %}
+  {% comment %} {% include "pagination.xhtml" with page=posts %} {% endcomment %}
+
+  {% comment %}class ListView generic view passes the page requested in a variable called page_obj{% endcomment %}
+  {% include "pagination.xhtml" with page=page_obj %} 
+  
+  
+{% endblock content %}
