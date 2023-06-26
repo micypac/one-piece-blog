@@ -1,4 +1,5 @@
 {% extends 'blog/base.xhtml' %}
+{% load blog_tags %}
 {% block title %}My Blog{% endblock title %}
 {% block content %}
   <h1>One Piece World</h1>
@@ -28,7 +29,8 @@
         Published {{ post.publish }} by {{ post.author }}
       </p>
 
-      {{ post.body|truncatewords:30|linebreaks }}
+      {% comment %} {{ post.body|truncatewords:30|linebreaks }} {% endcomment %}
+      {{ post.body|markdown|truncatewords_html:30 }}
     </h2>
   {% endfor %}
 
